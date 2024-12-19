@@ -1,0 +1,74 @@
+<h2>{{mealObj |json}}</h2>
+
+<h2>{{mealForm.errors}}</h2>
+
+<form #mealForm="ngForm" (ngSubmit)="AddMeal()">
+
+  <div>
+    <input type="text" class="form-control my-3" placeholder="Meal ID" #id="ngModel" pattern="^\d+$" required
+      [(ngModel)]="mealObj.id" name="ID" />
+    <!-- Show error messages for User ID -->
+    <div *ngIf="id.invalid && id.touched" class="text-danger">
+      <div *ngIf="id.errors?.['required']">Meal ID is required.</div>
+      <div *ngIf="id.errors?.['pattern']">Meal ID must be numeric.</div>
+    </div>
+  </div>
+
+
+  <div>
+    <input type="text" class="form-control my-3" placeholder="Meal Name" #Name="ngModel" pattern="^[a-zA-Z\s]+$"
+      required [(ngModel)]="mealObj.Name" name="Name" />
+    <!-- Show error messages for Meal Name -->
+    <div *ngIf="Name.invalid && Name.touched" class="text-danger">
+      <div *ngIf="Name.errors?.['required']">Meal Name is required.</div>
+      <div *ngIf="Name.errors?.['pattern']">Meal Name must only contain letters
+      </div>
+    </div>
+  </div>
+
+
+  <div>
+    <input type="text" class="form-control my-3" placeholder="Meal Description" #Description="ngModel"
+      pattern="^[a-zA-Z\s\d]+$" required [(ngModel)]="mealObj.Description" name="Description" />
+    <!-- Show error messages for Meal Description -->
+    <div *ngIf="Description.invalid && Description.touched" class="text-danger">
+      <div *ngIf="Description.errors?.['required']">Meal Description is required.</div>
+      <div *ngIf="Description.errors?.['pattern']">Meal Description must only contain letters
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <input type="number" class="form-control my-3" placeholder="Meal Price" #Price="ngModel" pattern="^(?:[1-9][0-9]*)$"
+      required [(ngModel)]="mealObj.Price" min="1" name="Price" />
+    <!-- Show error messages for Meal Description -->
+    <div *ngIf="Price.invalid && Price.touched" class="text-danger">
+      <div *ngIf="Price.errors?.['required']">Meal Price is required.</div>
+      <div *ngIf="Price.errors?.['pattern']">Meal Price must only contain Numbers And Positive Val
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="" class="form-label">Category</label>
+    <select required [(ngModel)]="mealObj.category" class="form-select form-select-lg" name="categoryID" id="">
+      <option value="" selected></option>
+      @for (cat of mealCategories; track cat.id) {
+      <option [value]="cat.Name">{{cat.Name}}</option>
+      }
+    </select>
+  </div>
+
+
+  <div class="mb-3">
+    <div *ngIf="imgSelected">
+      <img [src]="mealObj.ImageUrl" width="100px" height="100px" class="rounded-circle" alt="">
+    </div>
+    <label for="imageUpload" class="form-label">Upload Image:</label>
+    <input type="file" required id="imageUpload" class="form-control" (change)="onFileSelected($event)"
+      accept="image/*" />
+  </div>
+
+  <button class="btn btn-outline-success form-control" [disabled]="mealForm.invalid">Save</button>
+
+</form>

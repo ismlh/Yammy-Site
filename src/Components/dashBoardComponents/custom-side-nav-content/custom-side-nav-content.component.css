@@ -1,0 +1,20 @@
+.header-text h2 {
+  font-size: 1rem;
+}
+
+.header-text p {
+  font-size: 0.8rem;
+}
+
+.hide-header-text {
+  display: none;
+}
+
+:host* {
+  transition: all 800ms ease-in-out;
+}
+
+.selected-menu-item {
+  margin-left: 20px;
+  border-left: 5px solid rgb(75, 75, 139);
+}

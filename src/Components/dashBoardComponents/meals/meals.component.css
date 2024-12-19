@@ -1,0 +1,13 @@
+table {
+  width: 100%;
+}
+
+.modal {
+  z-index: 1055 !important;
+  /* Higher than other elements on the page */
+}
+
+.modal-dialog {
+  z-index: 1050 !important;
+  /* Ensure backdrop appears below the modal */
+}

@@ -1,0 +1,28 @@
+<form #mealForm="ngForm" (ngSubmit)="AddMealCategory()">
+
+  <div>
+    <input type="text" class="form-control my-3" placeholder="Category ID" #id="ngModel" pattern="^\d+$" required
+      [(ngModel)]="mealCategory.id" name="ID" />
+    <!-- Show error messages for User ID -->
+    <div *ngIf="id.invalid && id.touched" class="text-danger">
+      <div *ngIf="id.errors?.['required']">Category ID is required.</div>
+      <div *ngIf="id.errors?.['pattern']">Category ID must be numeric.</div>
+    </div>
+  </div>
+
+
+  <div>
+    <input type="text" class="form-control my-3" placeholder="Category Name" #Name="ngModel" pattern="^[a-zA-Z\s]+$"
+      required [(ngModel)]="mealCategory.Name" name="Name" />
+    <!-- Show error messages for Meal Name -->
+    <div *ngIf="Name.invalid && Name.touched" class="text-danger">
+      <div *ngIf="Name.errors?.['required']">Category Name is required.</div>
+      <div *ngIf="Name.errors?.['pattern']">Category Name must only contain letters
+      </div>
+    </div>
+  </div>
+
+
+  <button class="btn btn-outline-success form-control" [disabled]="mealForm.invalid">Save</button>
+
+</form>
