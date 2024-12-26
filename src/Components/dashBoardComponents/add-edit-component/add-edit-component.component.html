@@ -1,18 +1,6 @@
-<h2>{{mealObj |json}}</h2>
-
-<h2>{{mealForm.errors}}</h2>
 
 <form #mealForm="ngForm" (ngSubmit)="AddMeal()">
 
-  <div>
-    <input type="text" class="form-control my-3" placeholder="Meal ID" #id="ngModel" pattern="^\d+$" required
-      [(ngModel)]="mealObj.id" name="ID" />
-    <!-- Show error messages for User ID -->
-    <div *ngIf="id.invalid && id.touched" class="text-danger">
-      <div *ngIf="id.errors?.['required']">Meal ID is required.</div>
-      <div *ngIf="id.errors?.['pattern']">Meal ID must be numeric.</div>
-    </div>
-  </div>
 
 
   <div>

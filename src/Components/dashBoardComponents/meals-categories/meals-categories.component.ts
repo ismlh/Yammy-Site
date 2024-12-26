@@ -4,6 +4,7 @@ import { IMealCategory } from '../../../Models/imeal-category';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-meals-categories',
@@ -27,7 +28,7 @@ export class MealsCategoriesComponent implements OnInit {
   deleteCategory(id: string) {
     if (confirm('Are You Sure')) {
       this._mealCatSer.deleteMealCategory(id).subscribe((res) => {
-        alert('deleted');
+        Swal.fire(res.Name ,' deleted');
         this.getAllMealCategories();
       });
     }

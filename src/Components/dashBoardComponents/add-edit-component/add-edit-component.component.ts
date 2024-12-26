@@ -6,17 +6,20 @@ import { IMealCategory } from '../../../Models/imeal-category';
 import { MealCategoryService } from '../../../Services/meal-category.service';
 import { MealsService } from '../../../Services/meals.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-edit-component',
   standalone: true,
-  imports: [CommonModule, FormsModule, JsonPipe],
+  imports: [CommonModule, FormsModule],
   templateUrl: './add-edit-component.component.html',
   styleUrl: './add-edit-component.component.css',
 })
 export class AddEditComponentComponent implements OnInit {
   mealObj: IMeal = {} as IMeal;
   mealCategories: IMealCategory[] = [] as IMealCategory[];
+
+  meals: IMeal[] = [] as IMeal[];
 
   imgSelected: boolean = false;
 
@@ -42,11 +45,18 @@ export class AddEditComponentComponent implements OnInit {
       }
     });
     this.getAllMealCategories();
+    this.getAllMeals();
   }
 
   getAllMealCategories() {
     this._mealCatSer.getAllMealCategories().subscribe((res) => {
       this.mealCategories = res;
+    });
+  }
+
+  getAllMeals() {
+    this._mealService.getAllMeals().subscribe((res) => {
+      this.meals = res;
     });
   }
 
@@ -67,9 +77,10 @@ export class AddEditComponentComponent implements OnInit {
 
   AddMeal() {
     if (this.addEditButton) {
+      this.mealObj.id =(this.meals.length+1).toString();
       this._mealService.addMeal(this.mealObj).subscribe({
         next: () => {
-          alert(`Meal ${this.mealObj.Name} Added`);
+          Swal.fire(`Meal ${this.mealObj.Name} Added`);
           this.mealObj = {} as IMeal;
           this.imgSelected = false;
         },
@@ -78,7 +89,7 @@ export class AddEditComponentComponent implements OnInit {
       this._mealService
         .editMeal(this.mealObj.id, this.mealObj)
         .subscribe((res) => {
-          alert(res.Name + ' Updated ');
+          Swal.fire(res.Name + ' Updated ');
           this.addEditButton = true;
         });
     }

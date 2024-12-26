@@ -1,0 +1,63 @@
+
+
+<form #chefForm="ngForm" (ngSubmit)="AddChef()">
+
+
+  <div>
+    <input type="text" class="form-control my-3" placeholder="Chef Name" #Name="ngModel" pattern="^[a-zA-Z\s]+$"
+      required [(ngModel)]="chefObj.Name" name="Name" />
+    <!-- Show error messages for Chef Name -->
+    <div *ngIf="Name.invalid && Name.touched" class="text-danger">
+      <div *ngIf="Name.errors?.['required']">Chef Name is required.</div>
+      <div *ngIf="Name.errors?.['pattern']">Chef Name must only contain letters
+      </div>
+    </div>
+  </div>
+
+
+  <div>
+    <input type="text" class="form-control my-3" placeholder="Chef Role" #Role="ngModel"
+      pattern="^[a-zA-Z\s\d]+$" required [(ngModel)]="chefObj.Role" name="Role" />
+    <!-- Show error messages for Chef Role -->
+    <div *ngIf="Role.invalid && Role.touched" class="text-danger">
+      <div *ngIf="Role.errors?.['required']">Chef Role is required.</div>
+      <div *ngIf="Role.errors?.['pattern']">Chef Role must only contain letters
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <input type="text" class="form-control my-3" placeholder="Chef Experience" #Experience="ngModel"
+      required [(ngModel)]="chefObj.Experience" name="Experience" />
+    <!-- Show error messages for Chef Experience -->
+    <div *ngIf="Experience.invalid && Experience.touched" class="text-danger">
+      <div *ngIf="Experience.errors?.['required']">Chef Experience is required.</div>
+    </div>
+  </div>
+
+ <div class="row">
+  <div class="col-md-6">
+    <input type="text" class="form-control my-3" [(ngModel)]="chefObj.facebookUrl" placeholder="Chef FaceBookUrl" #Facebook="ngModel"
+      [(ngModel)]="chefObj.facebookUrl" name="facebookUrl" />
+  </div>
+
+  <div class="col-md-6">
+    <input type="text" class="form-control my-3" [(ngModel)]="chefObj.instgramUrl" placeholder="Chef instgramUrl" #Insta="ngModel"
+      [(ngModel)]="chefObj.instgramUrl" name="instgramUrl" />
+  </div>
+ </div>
+
+
+
+  <div class="mb-3">
+    <div *ngIf="imgSelected">
+      <img [src]="chefObj.ImageUrl" width="100px" height="100px" class="rounded-circle" alt="">
+    </div>
+    <label for="imageUpload" class="form-label">Upload Image:</label>
+    <input type="file" required id="imageUpload" class="form-control" (change)="onFileSelected($event)"
+      accept="image/*" />
+  </div>
+
+  <button class="btn btn-outline-success form-control" [disabled]="chefForm.invalid">Save</button>
+
+</form>

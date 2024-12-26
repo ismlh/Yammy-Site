@@ -1,6 +1,6 @@
 <div class="sidenav-header p-4 text-center">
   <img
-    src="https://scontent.fcai20-1.fna.fbcdn.net/v/t39.30808-1/355471602_815214663347996_1780792827645392912_n.jpg?stp=c0.0.1365.1365a_dst-jpg_s200x200_tt6&_nc_cat=108&ccb=1-7&_nc_sid=0ecb9b&_nc_ohc=sSQIph_AzMAQ7kNvgEEAibF&_nc_zt=24&_nc_ht=scontent.fcai20-1.fna&_nc_gid=Ah9A-oU6q0jyUe0xE-LWKLc&oh=00_AYDVaON5VL6Emg45GSiPEUDYXHC1xpDK90CrAymOi1aFdQ&oe=67660659"
+    src="/assets/img/4O9A6445.jpg" class="object-fit-contain"
     [width]="profilePicSize()" [height]="profilePicSize()" alt="Profile Picture"
     class=" rounded-circle mb-3 object-fit-cover">
   <div class="header-text" [class.hide-header-text]="sideNavCollapsed()">
@@ -13,8 +13,8 @@
 
 
 <mat-nav-list>
-  <a mat-list-item>
-    <mat-icon matListItemIcon style="color: rgb(22, 21, 21); font-size: 25px;" fontIcon="home"></mat-icon>
+  <a mat-list-item routerLink="/Home">
+    <mat-icon matListItemIcon style="color: rgb(22, 21, 21); font-size: 25px;" fontIcon="home" ></mat-icon>
     Home
   </a>
 

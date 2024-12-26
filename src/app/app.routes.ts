@@ -8,6 +8,8 @@ import { BookingTablesComponent } from '../Components/dashBoardComponents/bookin
 import { MessagesComponent } from '../Components/dashBoardComponents/messages/messages.component';
 import { AddEditComponentComponent } from '../Components/dashBoardComponents/add-edit-component/add-edit-component.component';
 import { AddEditMealCategoryComponent } from '../Components/dashBoardComponents/add-edit-meal-category/add-edit-meal-category.component';
+import { AddEditChefComponent } from '../Components/dashBoardComponents/add-edit-chef/add-edit-chef.component';
+import { HomeComponent } from '../Components/HomeComponents/home/home.component';
 
 export const routes: Routes = [
   // first Match Wins
@@ -31,6 +33,8 @@ export const routes: Routes = [
 
       { path: 'Chefs', component: ChefsComponent },
 
+      { path: 'addEditChef/:id', component: AddEditChefComponent },
+
       { path: 'BookedTables', component: BookingTablesComponent },
 
       { path: 'Messages', component: MessagesComponent },
@@ -38,6 +42,9 @@ export const routes: Routes = [
       { path: '**', pathMatch: 'full', redirectTo: 'Vision' },
     ],
   },
+
+  { path: 'Home', component: HomeComponent },
+
 
   { path: '', pathMatch: 'full', redirectTo: 'Dashboard' },
 

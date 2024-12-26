@@ -1,0 +1,36 @@
+<section class="our-menu py-5">
+  <p class="lead text-center mb-3" style="font-size: 0.9rem; color: #7F7F90;">OUR MENU</p>
+
+
+  <h2 class="fw-bolder text-center h-style my-4">Check Our <span style="color: #ce1212;"> Yummy Menu</span></h2>
+
+
+  <div class=" p-3 text-center " #anchorsParent>
+    <a (click)="navigation('All',anchor,anchorsParent)" #anchor class=" active p-2">All</a>
+    @for (mealCat of mealsCategories; track mealCat.id; let idx=$index) {
+
+      <a (click)="navigation(mealCat.Name,anchor,anchorsParent)"  #anchor  class=" p-2">{{mealCat.Name}}</a>
+    }
+  </div>
+
+  <div class="menu-head mt-4">
+    <p class="lead text-center mb-3" style="font-size: 0.9rem; color: #7F7F90;">MENU</p>
+    <h2 class="lead text-center mb-4" style="font-size: 1.5rem; color: #ce1212; letter-spacing: 1.2;">{{Category}}</h2>
+  </div>
+
+
+  <div class="container">
+    <div class="row  p-3 justify-content-center">
+      @for (meal of filterdMeals; track $index) {
+        <div class="col-lg-4  p-3 text-center">
+          <img [src]="meal.ImageUrl" width="60%"  alt="">
+          <h2 class="fw-bolder my-2">{{meal.Name}}</h2>
+          <p class="lead" style="color: #7F7F90;">{{meal.Description}}</p>
+          <p class="fw-bolder " style="color: #ce1212; font-size: 1.1rem;">{{meal.Price | currency}}</p>
+        </div>
+      }
+
+    </div>
+  </div>
+
+</section>

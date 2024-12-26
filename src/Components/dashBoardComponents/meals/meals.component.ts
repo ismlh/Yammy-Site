@@ -4,10 +4,13 @@ import { MealsService } from '../../../Services/meals.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-meals',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterLink],
+  imports: [CommonModule, FormsModule, RouterLink,SweetAlert2Module],
   templateUrl: './meals.component.html',
   styleUrl: './meals.component.css',
 })
@@ -25,7 +28,7 @@ export class MealsComponent implements OnInit {
       next: (res) => {
         this.Meals = res;
       },
-      error: () => alert('Error Please Run Json-Server File'),
+      error: () => Swal.fire('Error Please Run Json-Server File'),
     });
   }
 
@@ -33,7 +36,7 @@ export class MealsComponent implements OnInit {
     if (confirm('Are You Sure')) {
       this._mealService.deleteMeal(id).subscribe((res) => {
         this.getAllMeals();
-        alert(res.Name + ' Deleted');
+        Swal.fire(res.Name + ' Deleted');
       });
     }
   }

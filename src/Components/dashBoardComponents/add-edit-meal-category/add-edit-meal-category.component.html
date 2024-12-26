@@ -1,14 +1,5 @@
 <form #mealForm="ngForm" (ngSubmit)="AddMealCategory()">
 
-  <div>
-    <input type="text" class="form-control my-3" placeholder="Category ID" #id="ngModel" pattern="^\d+$" required
-      [(ngModel)]="mealCategory.id" name="ID" />
-    <!-- Show error messages for User ID -->
-    <div *ngIf="id.invalid && id.touched" class="text-danger">
-      <div *ngIf="id.errors?.['required']">Category ID is required.</div>
-      <div *ngIf="id.errors?.['pattern']">Category ID must be numeric.</div>
-    </div>
-  </div>
 
 
   <div>

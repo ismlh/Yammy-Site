@@ -17,6 +17,9 @@ export class MealsService {
   getMealByID(id: any): Observable<IMeal> {
     return this._http.get<IMeal>(`${environment.baseUrl}Meals/${id}`);
   }
+  getMealByCategory(category: any): Observable<IMeal[]> {
+    return this._http.get<IMeal[]>(`${environment.baseUrl}Meals?"category"=${category}`);
+  }
   addMeal(meal: IMeal): Observable<IMeal> {
     return this._http.post<IMeal>(`${environment.baseUrl}Meals`, meal);
   }

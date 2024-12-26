@@ -10,7 +10,7 @@
   display: none;
 }
 
-:host* {
+:host * {
   transition: all 800ms ease-in-out;
 }
 

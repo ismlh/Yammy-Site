@@ -4,16 +4,18 @@ import { MealCategoryService } from '../../../Services/meal-category.service';
 import { CommonModule, JsonPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-edit-meal-category',
   standalone: true,
-  imports: [CommonModule, FormsModule, JsonPipe],
+  imports: [CommonModule, FormsModule],
   templateUrl: './add-edit-meal-category.component.html',
   styleUrl: './add-edit-meal-category.component.css',
 })
 export class AddEditMealCategoryComponent implements OnInit {
   mealCategory: IMealCategory = {} as IMealCategory;
+  mealCategories: IMealCategory[] = [] as IMealCategory[];
 
   addEditButton: boolean = true;
   constructor(
@@ -31,13 +33,21 @@ export class AddEditMealCategoryComponent implements OnInit {
         });
       }
     });
+    this.getAllMealCategories();
+  }
+
+  getAllMealCategories(){
+    this._mealCatSer.getAllMealCategories().subscribe(res=>{
+      this.mealCategories=res;
+    })
   }
 
   AddMealCategory() {
     if (this.addEditButton) {
+      this.mealCategory.id=(this.mealCategories.length+1).toString();
       this._mealCatSer.addCategory(this.mealCategory).subscribe({
         next: () => {
-          alert(`Category  ${this.mealCategory.Name} Added`);
+          Swal.fire(`Category  ${this.mealCategory.Name} Added`);
           this.mealCategory = {} as IMealCategory;
         },
       });
@@ -45,7 +55,7 @@ export class AddEditMealCategoryComponent implements OnInit {
       this._mealCatSer
         .updateCategory(this.mealCategory.id, this.mealCategory)
         .subscribe((res) => {
-          alert('Updated ');
+          Swal.fire('Updated ');
           this.addEditButton = true;
         });
     }
