@@ -1,1 +1,85 @@
-<p>messages works!</p>
+<h2 class="fw-bolder text-md-center mb-5">Message Opreations</h2>
+
+
+<table class="table table-striped table-bordered border-black text-md-center">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Subject</th>
+      <th scope="col">Message</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody class="text-center">
+    @for (msg of Messages; track msg.id) {
+    <tr>
+      <th>{{msg.id}}</th>
+      <th>{{msg.Name}}</th>
+      <th>{{msg.Email}}</th>
+      <th>{{msg.Subject}}</th>
+
+      <th>{{msg.Message}}</th>
+      <th><button class="btn btn-outline-info form-control" (click)="updateMessage(msg.id)">Edit</button></th>
+      <th><button class="btn btn-outline-danger form-control" (click)="deleteMessgae(msg.id)">Delete</button></th>
+    </tr>
+    }
+  </tbody>
+</table>
+
+@if(contact.id!=null){
+
+<form #mesForm="ngForm" (ngSubmit)="updatemessage()">
+  <div>
+    <label for="">Client Name</label>
+    <input type="text" class="form-control my-3" placeholder="Client Name" #Name="ngModel" pattern="^[a-zA-Z\s]+$"
+      required [(ngModel)]="contact.Name" name="Name" />
+    <!-- Show error messages for Message Name -->
+    <div *ngIf="Name.invalid && Name.touched" class="text-danger">
+      <div *ngIf="Name.errors?.['required']">Client Name is required.</div>
+      <div *ngIf="Name.errors?.['pattern']">Client Name must only contain letters
+      </div>
+    </div>
+  </div>
+
+
+  <div>
+    <label for="">Client Email</label>
+
+    <input type="text" class="form-control my-3" placeholder="Client Email" #Email="ngModel" required
+      [(ngModel)]="contact.Email" name="Email" />
+    <!-- Show error messages for Client Email -->
+    <div *ngIf="Email.invalid && Email.touched" class="text-danger">
+      <div *ngIf="Email.errors?.['required']">Client Email is required.</div>
+    </div>
+  </div>
+
+
+  <div>
+    <label for="">Message Subject</label>
+
+    <input type="text" class="form-control my-3" placeholder="Message Subject" #Subject="ngModel" required
+      [(ngModel)]="contact.Subject" name="Subject" />
+    <!-- Show error messages for Client Email -->
+    <div *ngIf="Email.invalid && Email.touched" class="text-danger">
+      <div *ngIf="Email.errors?.['required']">Client Email is required.</div>
+    </div>
+  </div>
+
+
+
+  <div class="mb-3">
+    <input type="text" class="form-control my-3" placeholder="Client Message" #Message="ngModel"
+      [(ngModel)]="contact.Message" name="Message" />
+
+  </div>
+
+
+  <button class="btn btn-outline-success form-control" [disabled]="mesForm.invalid">Save</button>
+
+</form>
+
+
+}

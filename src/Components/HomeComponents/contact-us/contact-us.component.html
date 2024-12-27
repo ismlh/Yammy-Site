@@ -1,0 +1,105 @@
+<section id="Contact-us" class=" py-5 bg-body-secondary mt-5">
+  <p class="lead text-center" style="font-size: 0.9rem; color: #7F7F90;">Contact</p>
+
+  <h2 class="fw-bolder text-center h-style my-4">Need Help? <span style="color: #ce1212;"> Contact Us</span></h2>
+
+  <div class="container px-lg-0  px-3 mt-5">
+    <div class="row  gy-4 ">
+      <div class="col-lg-6">
+        <div class="d-flex bg-white p-3">
+          <i class="fa-solid fa-location-dot text-center align-content-center"
+            style="font-size: 1.3rem; background-color: #ce1212;color: aliceblue; width: 50px;height: 50px; border-radius: 50%;"></i>
+          <div class="ms-3">
+            <h2 class="mb-1 fw-bolder" style="color: #7F7F90; letter-spacing: 1.2;">Address</h2>
+            <p>Nasr City , Cairo , Egypt</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 ">
+        <div class="d-flex bg-white p-3">
+          <i class="fa-solid fa-phone text-center align-content-center"
+            style="font-size: 1.3rem; background-color: #ce1212;color: aliceblue; width: 50px;height: 50px; border-radius: 50%;"></i>
+          <div class="ms-3">
+            <h2 class="mb-1 fw-bolder" style="color: #7F7F90; letter-spacing: 1.2;">Islam Mohammed</h2>
+            <p>+201127414507</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="d-flex bg-white p-3">
+          <i class="fa-regular fa-envelope text-center align-content-center"
+            style="font-size: 1.3rem; background-color: #ce1212;color: aliceblue; width: 50px;height: 50px; border-radius: 50%;"></i>
+          <div class="ms-3">
+            <h2 class="mb-1 fw-bolder" style="color: #7F7F90; letter-spacing: 1.2;">Email</h2>
+            <p>islamblal648&#64;gmail.com</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 ">
+        <div class="d-flex bg-white p-3">
+          <i class="fa-solid fa-clock text-center align-content-center"
+            style="font-size: 1.3rem; background-color: #ce1212;color: aliceblue; width: 50px;height: 50px; border-radius: 50%;"></i>
+          <div class="ms-3">
+            <h2 class="mb-1 fw-bolder" style="color: #7F7F90; letter-spacing: 1.2;">Opening Hours</h2>
+            <p>24 Hours</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="message container mt-4 p-5 bg-white">
+    <form #mesForm="ngForm" (ngSubmit)="Addmessage()">
+      <div class="row">
+        <div class="col-lg-6">
+          <input type="text" class="form-control my-3" placeholder="Name" #Name="ngModel" pattern="^[a-zA-Z\s]+$"
+            required [(ngModel)]="contact.Name" name="Name" />
+          <!-- Show error messages for Message Name -->
+          <div *ngIf="Name.invalid && Name.touched" class="text-danger">
+            <div *ngIf="Name.errors?.['required']"> Name is required.</div>
+            <div *ngIf="Name.errors?.['pattern']"> Name must only contain letters
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-lg-6">
+
+          <input type="text" class="form-control my-3" placeholder="Email" #Email="ngModel" required
+            [(ngModel)]="contact.Email" name="Email" />
+          <!-- Show error messages for Client Email -->
+          <div *ngIf="Email.invalid && Email.touched" class="text-danger">
+            <div *ngIf="Email.errors?.['required']"> Email is required.</div>
+          </div>
+        </div>
+
+
+        <div>
+
+          <input type="text" class="form-control my-3" placeholder="Subject" #Subject="ngModel" required
+            [(ngModel)]="contact.Subject" name="Subject" />
+          <!-- Show error messages for Client Email -->
+          <div *ngIf="Email.invalid && Email.touched" class="text-danger">
+            <div *ngIf="Email.errors?.['required']"> Subject is required.</div>
+          </div>
+        </div>
+
+
+
+        <div class="mb-3">
+          <input type="text" class="form-control my-3" placeholder="Message" #Message="ngModel"
+            [(ngModel)]="contact.Message" name="Message" />
+
+        </div>
+      </div>
+      <button class="btn btn-outline-danger rounded-5 w-md-25 d-block mx-auto form-control"
+        [disabled]="mesForm.invalid">Send Message</button>
+
+
+
+    </form>
+  </div>
+
+
+</section>

@@ -1,26 +1,23 @@
-
-
-section .about_book
-{
+section .about_book {
   border: 4px solid #7f7f90;
   text-align: center;
   font-size: 2rem;
   padding: 20px 30px;
   font-weight: bolder;
   border-radius: 10px;
+  cursor: pointer;
 }
 
-section .about_book .btn1
-{
+section .about_book .btn1 {
   padding: 15px 20px;
   color: black;
   letter-spacing: 1.5;
   font-size: 2rem !important;
+
 }
 
 
-section .about_book .btn2
-{
+section .about_book .btn2 {
   color: #ce1212
 }
 
@@ -29,7 +26,7 @@ section .about_book .btn2
 
 
 @media screen and (max-width:786px) {
-  .img{
+  .img {
     width: 100% !important;
   }
 }

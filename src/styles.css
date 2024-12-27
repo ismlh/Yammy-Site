@@ -1,20 +1,40 @@
 /* You can add global styles to this file, and also import other style files */
+html {
+  scroll-behavior: smooth;
+}
 
-html, body { height: 100%; }
-body { margin: 0;
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
   font-family: 'segoe ui light';
 
 }
 
 
-.h-style{
-  font-size: 3rem !important ;
+.h-style {
+  font-size: 3rem !important;
   letter-spacing: 1.2 !important;
   margin-bottom: 30px !important;
+  font-family: "Playwrite GB J", serif !important;
+  font-optical-sizing: auto !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
 }
 
 @media screen and (max-width:668px) {
-  .h-style{
+  .h-style {
     font-size: 1.5rem !important;
   }
+}
+
+.item {
+  transition: transform 0.5 ease-in-out;
+}
+
+.item:hover {
+  transform: scale(1.04);
 }

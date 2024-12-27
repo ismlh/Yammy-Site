@@ -1,0 +1,33 @@
+.social-icons {
+  background-color: transparent;
+  position: absolute;
+  z-index: 5;
+  top: 20;
+  right: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 25px 10px;
+  visibility: hidden;
+}
+
+.social-icons a i {
+  margin-bottom: 25px;
+  color: #636060;
+  font-size: 1.3rem;
+  transition: transform 0.5s ease-in-out;
+  cursor: pointer;
+}
+
+.col-lg-4:hover {
+  transform: scale(1.03);
+}
+
+.col-lg-4:hover .social-icons {
+  visibility: visible;
+  background: color-mix(in srgb, #ffffff, transparent 60%);
+}
+
+.color {
+  color: color-mix(in srgb, #212529, transparent 50%);
+}

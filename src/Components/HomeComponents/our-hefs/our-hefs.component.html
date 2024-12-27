@@ -1,0 +1,31 @@
+<section id="our-Chefs" class="py-5 bg-body-secondary">
+
+  <p class="lead text-center mb-3" style="font-size: 0.9rem; color: #7F7F90;">OUR MENU</p>
+
+
+  <h2 class="fw-bolder text-center h-style my-5"> Our <span style="color: #ce1212;"> Proffesional Chefs </span></h2>
+
+
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      @for (chef of ourChefs; track chef.id) {
+      <div class="col-lg-4 p-2  position-relative">
+        <img [src]="chef.ImageUrl" width="100%" class="d-block mx-auto" alt="">
+        <div class="content bg-body  p-2 text-center">
+          <h2 class="mb-2 ">{{chef.Name}}</h2>
+          <p class="color">{{chef.Role}}</p>
+          <p class="color text-center">{{chef.Experience}}</p>
+        </div>
+        <div class="social-icons">
+          <a [href]="chef.facebookUrl" target="_blank">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+          <a [href]="chef.instgramUrl" target="_blank">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+</section>

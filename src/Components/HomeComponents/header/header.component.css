@@ -1,11 +1,10 @@
-header
-{
+header {
   background-color: #f2f2f2;
 }
 
 
 
-.h2-head{
+.h2-head {
   font-size: 3.7rem;
   letter-spacing: 1;
   line-height: 1;
@@ -13,7 +12,8 @@ header
   font-family: cursive;
   color: #37373F;
 }
-.p-head{
+
+.p-head {
   letter-spacing: 1.2;
   line-height: 1.2;
 
@@ -21,19 +21,14 @@ header
   color: #444444;
 }
 
-.buttons{
+.buttons {
   color: white !important;
   display: flex;
   justify-content: space-evenly;
 }
-.buttons button ,a{
+
+.buttons button,
+a {
   border-radius: 20px;
   padding: 10px 20px;
-}
-
-
-@media screen and (min-width: 992px) {
-  header{
-    height: 100vh !important;
-  }
 }

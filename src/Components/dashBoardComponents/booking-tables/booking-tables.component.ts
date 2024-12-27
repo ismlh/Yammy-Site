@@ -7,55 +7,55 @@ import Swal from 'sweetalert2';
 import { CommonModule, JsonPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-
 @Component({
   selector: 'app-booking-tables',
   standalone: true,
-  imports: [SweetAlert2Module,CommonModule,FormsModule],
+  imports: [SweetAlert2Module, CommonModule, FormsModule],
   templateUrl: './booking-tables.component.html',
-  styleUrl: './booking-tables.component.css'
+  styleUrl: './booking-tables.component.css',
 })
 export class BookingTablesComponent implements OnInit {
-  Reservations:IReservation[]=[] as IReservation[];
+  Reservations: IReservation[] = [] as IReservation[];
 
-  Reservation:IReservation={} as IReservation;
+  Reservation: IReservation = {} as IReservation;
 
-  constructor(private _reservService:ReserIReservationvationServiceService){}
+  constructor(private _reservService: ReserIReservationvationServiceService) {}
 
   ngOnInit(): void {
     this.getAllReservations();
   }
 
-  getAllReservations(){
+  getAllReservations() {
     this._reservService.getAll().subscribe({
-      next:(res)=>{
-        this.Reservations=res;
-        console.log(this.Reservations);
+      next: (res) => {
+        this.Reservations = res;
       },
-      error:()=>{
-        Swal.fire("please Run Json-Server");
-      }
-    })
+      error: () => {
+        Swal.fire('please Run Json-Server');
+      },
+    });
   }
 
-  updateReservation(){
-    this._reservService.updateReservation(this.Reservation.id,this.Reservation).subscribe((res)=>{
-      this.Reservation={} as IReservation;
-      this.getAllReservations();
-      Swal.fire("Updated Success");
-    })
+  updateReservation() {
+    this._reservService
+      .updateReservation(this.Reservation.id, this.Reservation)
+      .subscribe((res) => {
+        this.Reservation = {} as IReservation;
+        this.getAllReservations();
+        Swal.fire('Updated Success');
+      });
   }
-  updateReservationData(id:string){
-    this._reservService.getReservationById(id).subscribe((res)=>{
-      this.Reservation=res;
-    })
+  updateReservationData(id: string) {
+    this._reservService.getReservationById(id).subscribe((res) => {
+      this.Reservation = res;
+    });
   }
-  deletereservation(id:string){
+  deletereservation(id: string) {
     this._reservService.deleteReservation(id).subscribe({
-      next:(res)=>{
+      next: (res) => {
         Swal.fire(`Reservation Of ${res.Name} Deleted`);
         this.getAllReservations();
-      }
-    })
+      },
+    });
   }
 }

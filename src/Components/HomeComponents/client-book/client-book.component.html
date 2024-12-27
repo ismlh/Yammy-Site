@@ -1,0 +1,85 @@
+<section id="client_booking" class="py-5">
+
+  <p class="lead text-center mb-3" style="font-size: 0.9rem; color: #7F7F90;">Book A Table</p>
+
+  <h2 class="fw-bolder text-center h-style my-5"> Book Your <span style="color: #ce1212;"> Stay With Us </span></h2>
+
+  <div class="booking mt-5">
+    <div class="container">
+      <div class="row bg-body-secondary">
+        <div class="col-lg-4">
+          <img src="/assets/img/reservation.jpg" width="100%" alt="">
+        </div>
+        <div class="col-lg-8 mt-lg-3 mt-1">
+          <form class="mt-5" #resForm="ngForm" (ngSubmit)="AddReservation()">
+            <div class="inputs  p-lg-5">
+              <div class="row gy-4">
+                <div class="col-lg-4">
+                  <input type="text" class="form-control my-1" placeholder="Reservation Name" #Name="ngModel"
+                    pattern="^[a-zA-Z\s]+$" required [(ngModel)]="Reservation.Name" name="Name" />
+                  <!-- Show error messages for Reservation Name -->
+                  <div *ngIf="Name.invalid && Name.touched" class="text-danger">
+                    <div *ngIf="Name.errors?.['required']">Reservation Name is required.</div>
+                    <div *ngIf="Name.errors?.['pattern']">Reservation Name must only contain letters
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4  ">
+                  <input type="text" class="form-control my-1" placeholder="Reservation Email" #Email="ngModel" required
+                    [(ngModel)]="Reservation.Email" name="Email" />
+                  <!-- Show error messages for Reservation Email -->
+                  <div *ngIf="Email.invalid && Email.touched" class="text-danger">
+                    <div *ngIf="Email.errors?.['required']">Reservation Email is required.</div>
+                  </div>
+                </div>
+                <div class="col-lg-4 ">
+                  <input type="text" class="form-control my-1" placeholder="Reservation Phone" #Phone="ngModel" required
+                    [(ngModel)]="Reservation.Phone" name="Phone" pattern="^01(0|1|2|5)[0-9]{8}" />
+                  <!-- Show error messages for Reservation Phone -->
+                  <div *ngIf="Phone.invalid && Phone.touched" class="text-danger">
+                    <div *ngIf="Phone.errors?.['required']">Reservation Phone is required.</div>
+                    <div *ngIf="Phone.errors?.['pattern']">Reservation Phone must be correct Phone Number
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <label class="form-label">Reservation Date</label>
+
+                  <input type="date" class="form-control my-1" [(ngModel)]="Reservation.Date"
+                    placeholder="Reservation Date" #Date="ngModel" [(ngModel)]="Reservation.Date" name="Date"
+                    required="" />
+                  <div *ngIf="Date.invalid && Date.touched" class="text-danger">
+                    <div *ngIf="Date.errors?.['required']">Reservation Date is required.</div>
+                  </div>
+                </div>
+                <div class="col-lg-4  ">
+                  <label class="form-label">Reservation Time</label>
+                  <input type="time" class="form-control my-1" [(ngModel)]="Reservation.Time"
+                    placeholder="Reservation Time" #Time="ngModel" [(ngModel)]="Reservation.Time" name="Time"
+                    required />
+                  <div *ngIf="Time.invalid && Time.touched" class="text-danger">
+                    <div *ngIf="Time.errors?.['required']">Reservation Time is required.</div>
+                  </div>
+                </div>
+                <div class="col-lg-4 ">
+                  <input type="number" class="form-control my-4" min="1" [(ngModel)]="Reservation.numsOfPeople"
+                    placeholder="Number Of Peoples" #numsOfPeople="ngModel" [(ngModel)]="Reservation.numsOfPeople"
+                    name="numsOfPeople" required />
+                  <div *ngIf="numsOfPeople.invalid && numsOfPeople.touched" class="text-danger">
+                    <div *ngIf="numsOfPeople.errors?.['required']">Reservation numsOfPeople is required.</div>
+                  </div>
+                </div>
+                <div class="col-12 mt-lg-4">
+                  <textarea class="form-control my-1" placeholder="Message" #Message="ngModel"
+                    [(ngModel)]="Reservation.Message" name="Message" style="width: 100%;" id=""></textarea>
+                </div>
+              </div>
+            </div>
+            <button type="submit" [disabled]="resForm.invalid"
+              class="btn btn-outline-danger w-75 d-block mx-auto mt-1 mt-lg-0">Book a Table</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

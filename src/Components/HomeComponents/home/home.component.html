@@ -3,6 +3,12 @@
 <app-about-us></app-about-us>
 <app-choose-us></app-choose-us>
 <app-our-menu></app-our-menu>
+<app-our-hefs></app-our-hefs>
+<app-client-book></app-client-book>
+<app-contact-us></app-contact-us>
+<app-footer></app-footer>
 
+@if (scrollPosition>1000) {
+<button class="back-Top" (click)="goToTop('Header')"><i class="fa-solid fa-arrow-up"></i></button>
 
-
+}
