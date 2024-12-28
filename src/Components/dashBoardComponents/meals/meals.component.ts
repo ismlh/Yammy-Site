@@ -5,12 +5,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
-import Swal from 'sweetalert2';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 @Component({
   selector: 'app-meals',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterLink,SweetAlert2Module],
+  imports: [CommonModule, FormsModule, RouterLink, SweetAlert2Module],
   templateUrl: './meals.component.html',
   styleUrl: './meals.component.css',
 })

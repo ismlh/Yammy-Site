@@ -4,7 +4,7 @@ import { MealCategoryService } from '../../../Services/meal-category.service';
 import { CommonModule, JsonPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import Swal from 'sweetalert2';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 @Component({
   selector: 'app-add-edit-meal-category',
@@ -36,15 +36,15 @@ export class AddEditMealCategoryComponent implements OnInit {
     this.getAllMealCategories();
   }
 
-  getAllMealCategories(){
-    this._mealCatSer.getAllMealCategories().subscribe(res=>{
-      this.mealCategories=res;
-    })
+  getAllMealCategories() {
+    this._mealCatSer.getAllMealCategories().subscribe((res) => {
+      this.mealCategories = res;
+    });
   }
 
   AddMealCategory() {
     if (this.addEditButton) {
-      this.mealCategory.id=(this.mealCategories.length+1).toString();
+      this.mealCategory.id = (this.mealCategories.length + 1).toString();
       this._mealCatSer.addCategory(this.mealCategory).subscribe({
         next: () => {
           Swal.fire(`Category  ${this.mealCategory.Name} Added`);

@@ -5,28 +5,27 @@ import { IChef } from '../Models/ichef';
 import { environment } from '../environments/environment.development';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ChefsServiceService {
+  constructor(private _http: HttpClient) {}
 
-  constructor(private _http:HttpClient) { }
-
-  getAllChefs():Observable<IChef[]>{
-    return this._http.get<IChef[]>(`http://localhost:3000/Chefs`);
+  getAllChefs(): Observable<IChef[]> {
+    return this._http.get<IChef[]>(`${environment.baseUrl}Chefs`);
   }
 
-  getChefById(id:any ):Observable<IChef>{
-    return this._http.get<IChef>(`${environment.baseUrl}Chefs/${id}`)
+  getChefById(id: any): Observable<IChef> {
+    return this._http.get<IChef>(`${environment.baseUrl}Chefs/${id}`);
   }
 
-  addChef(chef:IChef):Observable<IChef>{
-    return this._http.post<IChef>(`${environment.baseUrl}Chefs`,chef)
+  addChef(chef: IChef): Observable<IChef> {
+    return this._http.post<IChef>(`${environment.baseUrl}Chefs`, chef);
   }
 
-  updateChef(id:string,chef:IChef):Observable<IChef>{
-    return this._http.put<IChef>(`${environment.baseUrl}Chefs/${id}`,chef);
+  updateChef(id: string, chef: IChef): Observable<IChef> {
+    return this._http.put<IChef>(`${environment.baseUrl}Chefs/${id}`, chef);
   }
-  deleteChef(id:string):Observable<IChef>{
+  deleteChef(id: string): Observable<IChef> {
     return this._http.delete<IChef>(`${environment.baseUrl}Chefs/${id}`);
   }
 }

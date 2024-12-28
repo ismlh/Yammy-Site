@@ -1,6 +1,9 @@
 @if(!isHome){
 <app-dashboard></app-dashboard>
 }
+@else if(isNotFoundHome&&isNotFoundDashboard){
+<app-not-found></app-not-found>
+}
 @else{
 <app-home></app-home>
 }

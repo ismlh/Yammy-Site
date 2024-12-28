@@ -6,7 +6,7 @@ import { IMealCategory } from '../../../Models/imeal-category';
 import { MealCategoryService } from '../../../Services/meal-category.service';
 import { MealsService } from '../../../Services/meals.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import Swal from 'sweetalert2';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 @Component({
   selector: 'app-add-edit-component',
@@ -77,7 +77,7 @@ export class AddEditComponentComponent implements OnInit {
 
   AddMeal() {
     if (this.addEditButton) {
-      this.mealObj.id =(this.meals.length+1).toString();
+      this.mealObj.id = (this.meals.length + 1).toString();
       this._mealService.addMeal(this.mealObj).subscribe({
         next: () => {
           Swal.fire(`Meal ${this.mealObj.Name} Added`);

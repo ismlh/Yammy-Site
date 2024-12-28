@@ -3,9 +3,9 @@ import { IReservation } from '../../../Models/ireservation';
 import { ReserIReservationvationServiceService } from '../../../Services/reser-ireservationvation-service.service';
 
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
-import Swal from 'sweetalert2';
-import { CommonModule, JsonPipe } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-booking-tables',
@@ -42,7 +42,7 @@ export class BookingTablesComponent implements OnInit {
       .subscribe((res) => {
         this.Reservation = {} as IReservation;
         this.getAllReservations();
-        Swal.fire('Updated Success');
+        alert('Updated Success');
       });
   }
   updateReservationData(id: string) {
@@ -53,7 +53,7 @@ export class BookingTablesComponent implements OnInit {
   deletereservation(id: string) {
     this._reservService.deleteReservation(id).subscribe({
       next: (res) => {
-        Swal.fire(`Reservation Of ${res.Name} Deleted`);
+        alert(`Reservation Of ${res.Name} Deleted`);
         this.getAllReservations();
       },
     });
